@@ -50,9 +50,7 @@ import java.io.Serializable;
                 @Override
                 public void onClick(View view) {
                     Intent paso = new Intent(MainActivity.this, Resultado.class);
-
                     Bundle pasoobjetos = new Bundle();
-
                     double preciopizza = datos[pizzas.getSelectedItemPosition()].getPrecio();
                     Pizza pizza = new Pizza(datos[pizzas.getSelectedItemPosition()].getNombre(),
                             datos[pizzas.getSelectedItemPosition()].getDescripcion(),
@@ -179,6 +177,7 @@ import java.io.Serializable;
                 holder.nombre.setText(datos[position].getNombre());
                 holder.descripcion.setText(datos[position].getDescripcion());
                 holder.precio.setText(datos[position].getPrecio());
+                //holder.imagen.(datos[position].getImagen());
                 return (item);
 
             }

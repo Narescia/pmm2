@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Spinner1</string>
+    <string name="prompt">Lo que sea</string>
 </resources>

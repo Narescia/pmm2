@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.anaval.examenfinalizado.MainActivity">
+
+    <TextView
+        android:text="Pizzería Online"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/titulo"
+        android:textColor="@android:color/black"
+        android:textAlignment="center"
+        android:textStyle="normal|bold"
+        android:textSize="24dp"
+        android:textAllCaps="true"
+        android:layout_marginTop="23dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/pizza"
+        android:layout_alignStart="@+id/pizza" />
+
+    <ImageView
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:id="@+id/imageView"
+        app:srcCompat="@drawable/logopizza"
+
+        android:layout_alignRight="@+id/tiposenvios"
+        android:layout_alignEnd="@+id/tiposenvios" />
+
+    <CheckBox
+        android:text="+Queso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/queso"
+        android:layout_below="@+id/tiposenvios"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="37dp"
+        android:textSize="18sp"
+        android:textStyle="normal|bold" />
+
+    <CheckBox
+        android:text="+Ingred"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ingred"
+        android:layout_alignBaseline="@+id/queso"
+        android:layout_alignBottom="@+id/queso"
+        android:layout_marginLeft="150dp"
+        android:textStyle="normal|bold"
+        android:textSize="18dp" />
+
+    <CheckBox
+        android:text="+Grande"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/grande"
+        android:layout_alignBaseline="@+id/queso"
+        android:layout_alignBottom="@+id/queso"
+        android:layout_marginLeft="10dp"
+        android:textStyle="normal|bold"
+        android:textSize="18dp" />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tiposenvios"
+        android:layout_below="@+id/imageView"
+        android:layout_marginLeft="200dp"
+        android:layout_marginTop="27dp">
+
+        <RadioButton
+            android:text="En local"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/local"
+            android:layout_below="@+id/tiposenvios"
+            android:textSize="18dp"
+            android:textStyle="normal|bold"
+            android:checked="true" />
+
+        <RadioButton
+            android:id="@+id/domicilio"
+            android:layout_width="wrap_content"
+            android:layout_height="47dp"
+            android:layout_below="@+id/local"
+            android:layout_marginTop="36dp"
+            android:text="Envío domicilio"
+            android:textSize="18dp"
+            android:textStyle="normal|bold" />
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/unidades"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="Introduce las unidades"
+        android:ems="20"
+        android:layout_below="@+id/grande"
+        android:layout_marginTop="36dp"
+        android:textAlignment="center"
+        android:textStyle="normal|bold" />
+
+    <Spinner
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/pizza"
+        android:layout_alignTop="@+id/tiposenvios"
+        android:layout_alignLeft="@+id/grande"
+        android:layout_alignStart="@+id/grande"
+        android:layout_marginTop="33dp" />
+
+    <Button
+        android:text="Total"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:id="@+id/total"
+        android:textSize="18dp"
+        android:textStyle="normal|bold"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/grande"
+        android:layout_alignStart="@+id/grande"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="33dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:text ="TextView"
+        android:gravity="center"
+        android:layout_marginRight="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_alignBottom="@+id/total"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+
+</RelativeLayout>

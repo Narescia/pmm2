@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -31,19 +32,18 @@ public class MainActivity extends AppCompatActivity {
         AdaptadorPelicula adaptador = new AdaptadorPelicula(this);
         final Spinner peliculas = (Spinner) findViewById(R.id.peliculas);
         peliculas.setAdapter(adaptador);
+        final Button boton = (Button) findViewById(R.id.boton);
 
-        peliculas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            public void onItemSelected(AdapterView<?> adapterView, View arg1, int position, long id){
-                Pelicula pelicula = datos[position];
+        boton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Pelicula pelicula = (Pelicula) peliculas.getSelectedItem();
                 Intent mIntent = new Intent(MainActivity.this,Pantalla2.class);
                 Bundle miBundle = new Bundle();
                 miBundle.putSerializable("clave", pelicula);
                 mIntent.putExtras(miBundle);
 
                 startActivity(mIntent);
-            }
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
             }
         });
 

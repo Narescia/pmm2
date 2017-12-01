@@ -12,16 +12,16 @@ public class Pantalla2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pantalla2);
 
-      Bundle mibundle = getIntent().getExtras();
+        Bundle mibundle = getIntent().getExtras();
 
         Pelicula peli = (Pelicula) mibundle.getSerializable("clave");
 
-        TextView titulo = (TextView)findViewById(R.id.titulo);
+        TextView titulo = (TextView)findViewById(R.id.titulo2);
 
         titulo.setText(peli.getTitulo());
 
-        TextView añoEstreno = (TextView)findViewById(R.id.añoEstreno);
+        TextView añoEstreno = (TextView)findViewById(R.id.añoEstreno2);
 
-        añoEstreno.setText(peli.getAño());
+        añoEstreno.setText(Integer.toString(peli.getAño()));
     }
 }
