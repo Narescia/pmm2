@@ -25,10 +25,6 @@ public class Grafico {
         radioColision = (alto + ancho) / 4;
     }
 
-    public static double getMaxVelocidad() {
-        return MAX_VELOCIDAD;
-    }
-
     //Dibujamos el gráfico en su posición actual
     public void dibujaGrafico(Canvas canvas) {
         canvas.save();
@@ -81,6 +77,13 @@ public class Grafico {
         return Math.sqrt((x - x2) * (x - x2) + (y - y2) * (y - y2));
     }
 
+    public Drawable getDrawable() {
+        return drawable;
+    }
+    public void setDrawable(Drawable drawable) {
+        this.drawable = drawable;
+    }
+
     public void setIncX(double incX) {
         this.incX = incX;
     }
@@ -95,6 +98,9 @@ public class Grafico {
 
     public void setRotacion(int rotacion) {
         this.rotacion = rotacion;
+    }
+    public int getRotacion() {
+        return rotacion;
     }
 
     public int getAncho() {
@@ -123,5 +129,23 @@ public class Grafico {
 
     public double getIncY() {
         return incY;
+    }
+
+    public View getView() {
+        return view;
+    }
+
+    public void setView(View view) {
+        this.view = view;
+    }
+    public static int getMaxVelocidad() {
+        return MAX_VELOCIDAD;
+    }
+    public int getRadioColision() {
+        return radioColision;
+    }
+
+    public void setRadioColision(int radioColision) {
+        this.radioColision = radioColision;
     }
 }

@@ -28,12 +28,29 @@ public class VistaJuego extends View {
     //Momento en el que se realiza el ultimo proceso
     private long ultimoProceso = 0;
 
+    // PANTALLA TÁCTIL //
+    // Las variables mX y mY se utilizarán para recordar
+    // las coordenadas del último evento.
+    private float mX=0, mY=0;
+    private boolean disparo=false;
+
+    // RUEDA //
+    private Grafico rueda;
+    private static int VELOCIDAD_RUEDA = 12;
+    private boolean ruedaActiva;
+    private int distanciaRueda;
+
+    // VARIABLES GLOBALES //
+    //Controlar si la aplicación está en segundo plano
+    private boolean corriendo = false;
+    //Controlar si la aplicación está en pausa
+    private boolean pausa;
+
     public VistaJuego(Context contexto, AttributeSet atributos) {
         super(contexto, atributos);
         Drawable graficoBici, graficoCoche, graficoRueda;
         //Obtenemos la imagen/recurso del coche
         graficoCoche = contexto.getResources().getDrawable(R.drawable.coche);
-
         //Creamos un vector para contener todos los coches que se ven en la pantalla
         //y lo rellenamos con graficos de coches
         // con valores aleatorios para su velocidad, direccion y rotacion.
@@ -50,8 +67,16 @@ public class VistaJuego extends View {
         //BICI
         graficoBici = contexto.getResources().getDrawable(R.drawable.bici);
         bici = new Grafico(this, graficoBici);
-        hiloJuego = new HiloJuego();
-        hiloJuego.start();
+
+        // CONTROL DEL HILO DEL JUEGO
+        corriendo = true;
+
+        // RUEDA
+
+        graficoRueda = contexto.getResources().getDrawable(R.drawable.rueda);
+
+        rueda = new Grafico(this, graficoRueda);
+        ruedaActiva = false;
 
     }
 
@@ -67,6 +92,10 @@ public class VistaJuego extends View {
                 coche.setPosY(Math.random() * (h - coche.getAlto()));
             } while (coche.distancia(bici) < (w + h) / 5);
         }
+        bici.setPosX(w-bici.getAncho()/2);
+        bici.setPosY(h-bici.getAlto()/2);
+        hiloJuego = new HiloJuego();
+        hiloJuego.start();
 
     }
 
@@ -77,6 +106,8 @@ public class VistaJuego extends View {
         for (Grafico coche : Coches) {
             coche.dibujaGrafico(canvas);
         }
+        bici.dibujaGrafico(canvas);
+
 
     }
     protected synchronized void actualizaMovimiento() {
@@ -98,6 +129,8 @@ public class VistaJuego extends View {
             bici.setIncY(nIncY);
         }
         bici.incrementaPos();
+        bici.setIncX(0);
+        bici.setIncY(0);
 
         //Movemos los coches
         for (Grafico coche : Coches) {
@@ -113,6 +146,7 @@ public class VistaJuego extends View {
             }
         }
     }
+
 }
 
 
