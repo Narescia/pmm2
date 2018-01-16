@@ -2,8 +2,6 @@ package com.example.anaval.fragmentodinamico;
 
 
 import android.app.FragmentTransaction;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.app.Fragment;
 import android.os.Bundle;

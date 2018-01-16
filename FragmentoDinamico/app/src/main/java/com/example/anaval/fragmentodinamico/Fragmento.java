@@ -1,7 +1,5 @@
 package com.example.anaval.fragmentodinamico;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
@@ -27,13 +25,13 @@ public class Fragmento extends Fragment {
         View v  = null;
         if (mNum % 2 == 0){
             v = inflater.inflate(R.layout.fragment_fragmento, container, false);
-             v.findViewById(R.id.text);            }
+            v.findViewById(R.id.text);            }
         else{
             v = inflater.inflate(R.layout.fragmento_2, container, false);
             v.findViewById(R.id.text2);
         }
 
-        ((TextView)tv).setText("Fragmento nÃºmero #" + mNum);
+        ((TextView)tv).setText("Fragmento n " + mNum);
         return v;
     }
 }
