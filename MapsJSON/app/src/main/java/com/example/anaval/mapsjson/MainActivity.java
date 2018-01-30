@@ -1,11 +1,18 @@
-package com.example.anaval.comunicacionjson;
+package com.example.anaval.mapsjson;
+
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -28,16 +35,29 @@ public class MainActivity extends AppCompatActivity {
 
     private String[] blogTitles;
 
+    private EditText longitud;
+    private EditText latitud;
+    private Button boton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        listView = (ListView) findViewById(R.id.listView);
+        longitud = (EditText)findViewById(R.id.longitud);
+        latitud = (EditText)findViewById(R.id.latitud);
+        boton = (Button)findViewById(R.id.boton);
 
-        final String url = "http://javatechig.com/api/get_category_posts/?dev=1&slug=android";
+        final String url = ("http://maps.googleapis.com/maps/api/geocode/json?"
+                +"latlng="+ latitud.getText().toString() +" ,"
+                +longitud.getText().toString() +"&sensor=false");
 
-        new AsyncHttpTask().execute(url);
+        boton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new AsyncHttpTask().execute(url);
+            }
+        });
     }
 
 
@@ -128,16 +148,13 @@ public class MainActivity extends AppCompatActivity {
         try{
             JSONObject response = new JSONObject(result);
 
-            JSONArray posts = response.optJSONArray("posts");
+            JSONArray results = response.optJSONArray("results");
 
-            blogTitles = new String[posts.length()];
+            JSONObject ubicacion = results.getJSONObject(0);
 
-            for(int i=0; i< posts.length();i++ ){
-                JSONObject post = posts.optJSONObject(i);
-                String title = post.optString("title");
+            String direccion = ubicacion.getString("formatted_address");
 
-                blogTitles[i] = title;
-            }
+            Toast.makeText(this, direccion, Toast.LENGTH_SHORT).show();
 
         }catch (JSONException e){
             e.printStackTrace();
