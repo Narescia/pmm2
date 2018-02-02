@@ -1,6 +1,6 @@
 package com.example.anaval.listatarea2;
 
-import android.support.v7.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
@@ -106,7 +106,8 @@ public class ItemActivity extends Activity {
             MainActivity.mDbHelper.open();
             if (mRowId == null){
                 //insertar
-                MainActivity.mDbHelper.insertItem(itemText, placeText, descriptionText, 		Integer.parseInt(importanceText));
+                MainActivity.mDbHelper.insertItem(itemText, placeText, descriptionText,
+                        Integer.parseInt(importanceText));
             }
             else{
                 //actualizar
